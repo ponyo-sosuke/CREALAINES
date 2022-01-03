@@ -132,3 +132,9 @@ Raphael detiendra le dossier leader car il fera l'assemblage des pages.<br><br>
 
    Le planning pourra varier selon les détails techniques rencontrés.<br>
    Merci à tous pour votre aide.<br><br>
+
+
+## KANBAN TRELLO
+
+https://trello.com/b/hzyfLGv3/kanban-crea-laines
+   
