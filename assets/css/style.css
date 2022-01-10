@@ -1,102 +1,440 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html, 
+html * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Gotham, Helvetica Neue, Helvetica, Arial," sans-serif";
+}
+
+header {
+	padding: 10px;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+footer {
+	padding: 20px 30px;
+	background-color: #fce4c5;
+    text-decoration: none;
+}
+
 body {
-
-    background-image: url(https://lorlaine.com/wp-content/uploads/2019/06/laines-de-luxe.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    font-family:'Apple Chancery', cursive;
-
-  }
-
-  .logo {
-
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  float: left;
-  overflow: hidden;
-
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FFF
 }
 
-
-/* Navbar container */
-nav {
-overflow: hidden;
-background-color: rgba(255, 255, 255, 1);
-border-right: 1px solid rgb(0, 0, 0);
-margin-top: 10px;
-border-radius: 8px;
-padding: 10px 0px 0px 15px;
+.crealaine-logo {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 200px;
 }
 
-/* Links inside the navbar */
+.style-nav ul {
+	list-style-type: none;
+}
+
+.style-nav ul li a {
+	text-decoration: none;
+	color: #2F322A;
+	text-align: center;
+	display: block;
+	padding: 0px;
+    margin: 12px;
+}
+.photo {
+	background-image: url(img/assets-ambiance/KP-Zoom_5-wool.jpg);
+	background-size: cover;
+	padding: 20px 20px 50px 20px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.typo-main{
+	font-family: Arial, Helvetica, sans-serif;
+	color: #ff5d5d;
+	font-weight: 600;
+}
+
+/* ===================================*/
+.toggle,
+[id^=drop] {
+	display: none;
+}
+
+/* navbar container. */
+
+.drop-1{
+	display: inline-block;
+	position: relative;
+	height: auto;
+}
+
+.crealaine-logo {
+	display: block;
+	padding: 0 14px;
+	float: left;
+	font-size:0px;
+	line-height: 160px;
+    text-decoration: none;
+}
+
+.picto-fb{
+    width: 38px;
+    display: block;
+}
+
+/* depuis que on a "ul li" "float:left"
+ * il faut nettoyer le container après. */
+
+nav:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+/* Changer padding, margin et "list-style" de "ul",
+ * mettre une "position:relative" */
+nav ul {
+	float: right;
+	padding:0;
+	margin:0;
+	list-style: none;
+	position: relative;
+	}
+	
+/* Positionner items inline */
+nav ul li {
+	margin: 0px;
+	display:inline-block;
+	float:none;
+	}
+
+/* Styling the liens */
 nav a {
-float: left;
-font-size: 15px;
-color: rgb(26, 25, 25);
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
+	display:block;
+	padding:10px 20px;	
+	color: #ff5d5d;;
+	font-size:16px;
+    font-weight: 500;
+	text-decoration:none;
 }
 
-nav a.active {
-border-bottom: 3px solid red;
+/* couleur au survol en background */
+nav ul li ul li:hover { background: #ffdddd; }
+
+/* Background color change on Hover */
+nav a:hover { 
+	background-color: #ffdddd; 
 }
 
-nav a.fb {
+/* Cacher Dropdowns par Defaut
+ * lui donner une position absolute */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	/* meme nombre de "line-height" que "nav a" */
+	top: 100px; 
+}
+	
+/* Display Dropdowns sur Hover */
+nav ul li:hover > ul {
+	display:inherit;
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:170px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
 
-float: right;
+/* Second, Third and more Tiers	
+ * On bouge le 2nd et 3rd etc tier dropdowns vers left
+ * by the amount of the width of the first tier.
+*/
+nav ul ul ul li {
+	position: relative;
+	top:-20px;
+	/* meme nombre de "width" que "nav ul ul li" */ 
+	left:170px; 
+}
+
+	
+/* Changer ' +' dans l'ordre de changer le Dropdown symbol */
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+
+
+/* Media Queries
+--------------------------------------------- */
+
+@media all and (max-width : 768px) {
+
+	.crealaine-logo {
+		display: block;
+		padding: 0;
+		width: 100%;
+		text-align: center;
+		float: none;
+	}
+
+	nav {
+		margin: 0;
+	}
+
+	/* Cacher navbar menu par defaut */
+	/* aussi cacher  */
+	.toggle + a,
+	.menu {
+		display: none;
+	}
+
+	/* Style du toggle table */
+	.toggle {
+		display: block;
+		background-color: #254441;
+		padding:12px 20px;	
+		color:#FFF;
+		font-size:16px;
+		text-decoration:none;
+		border:none;
+	}
+
+	.toggle:hover {
+		background-color: #ff5d5d;
+	}
+
+	/* Display Dropdown quand on clique sur le Parent */
+	[id^=drop]:checked + ul {
+		display: block;
+	}
+
+	/* Change le menu item's width de 100% */
+	nav ul li {
+		display: block;
+		width: 100%;
+		}
+
+	nav ul ul .toggle,
+	nav ul ul a {
+		padding: 0 40px;
+	}
+
+	nav ul ul ul a {
+		padding: 0 80px;
+	}
+
+	nav a:hover,
+ 	nav ul ul ul a {
+		background-color: #ff5d5d;
+	}
+  
+	nav ul li ul li .toggle,
+	nav ul ul a,
+  nav ul ul ul a{
+		padding:14px 20px;	
+		color:#FFF;
+		font-size:16px; 
+	}
+  
+  
+	nav ul li ul li .toggle,
+	nav ul ul a {
+		background-color: #3a3a3a; 
+	}
+
+	/* Cacher Dropdowns par Defaut */
+	nav ul ul {
+		float: none;
+		position:static;
+		color: #ffffff;
+		/* meme nombre de "line-height" que "nav a" */
+	}
+		
+	/* Cacher menus en hover */
+	nav ul ul li:hover > ul,
+	nav ul li:hover > ul {
+		display: none;
+	}
+		
+	/* Fisrt Tier Dropdown */
+	nav ul ul li {
+		display: block;
+		width: 100%;
+	}
+
+	nav ul ul ul li {
+		position: static;
+		/* meme nombre de "width" que "nav ul ul li" */ 
+
+	}
 
 }
 
-/* The dropdown container */
-.dropdown {
-float: left;
-overflow: auto;
+@media all and (max-width : 330px) {
+
+	nav ul li {
+		display:block;
+		width: 94%;
+	}
+
 }
 
-/* Dropdown button */
-.dropdown .dropbtn {
-font-size: 15px; 
-border: none;
-outline: none;
-color: rgb(29, 28, 28);
-padding: 14px 16px;
-background-color: inherit;
-font-family: inherit; /* Important for vertical align on mobile phones */
-margin: 0; /* Important for vertical align on mobile phones */
+/* fin dropdown */
+
+.main-prime {
+	background-image: url(img/assets-ambiance/pexels-photo-3309670.jpeg);
+	background-size: cover;
+	padding: 20px 20px 50px 20px;
+	color: #FFFFFF;
+	text-align: center;
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-background-color: rgb(218, 218, 218);
+h1 {
+	font-size: 57px;
+	text-transform: uppercase;
+	font-weight: 200;
+	margin-bottom: 60px;
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-display: none;
-position: absolute;
-background-color: #f9f9f9;
-min-width: 160px;
-box-shadow: 0px 8px 16px 0px rgba(36, 34, 34, 0.2);
-z-index: 1;
+h2 {
+	font-size: 30px;
+	text-transform: uppercase;
+	font-weight: 200;
+	margin-bottom: 23px;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-float: none;
-color: rgb(0, 0, 0);
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-text-align: left;
+h3 {
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: 200;
+	margin-bottom: 120px;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-background-color: rgb(201, 201, 201);
+h4 {
+	font-size: 16px;
+	font-weight: 200;
+	margin-bottom: 35px;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-display: block;
+p {
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 35px;
+}
+
+.button {
+	border: 2px #FFFFFF solid;
+	padding: 8px 30px;
+	border-radius: 30px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.info-box-tan {
+	background-color: #c4a981;
+	color: #FFFFFF;
+	padding: 30px 20px 60px;
+	text-align: center;
+}
+
+.info-box-dark {
+	background-color: #2D2D35;
+	color: #FFFFFF;
+	padding: 30px 20px 60px;
+	text-align: center;
+}
+
+.footer-text {
+	font-size: 13px;
+	margin-bottom: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-pages{
+    list-style-type: none;
+    justify-content: space-around;
+    text-decoration: none;
+    display: block;
+}
+.col {
+	width: 100%;
+    justify-content:space-between;
+}
+
+.row:before, .row:after {
+	content: "";
+	display: table;
+}
+
+.row:after {
+	clear: both;
+}
+
+/*Tablet View*/
+
+@media (min-width: 768px){
+	
+	body {
+		max-width: 778px;
+	}
+	/*
+	.style-nav ul li {
+		display: inline;
+	}
+	*/
+	.style-nav ul {
+		text-align: center;
+	}
+	
+	h1 {
+		font-size: 40px;
+		margin-bottom: 90px;
+	}
+	
+	h2 {
+		margin-bottom: 16px;
+	}
+	
+	.col-md-one-half {
+		width: 50%;
+	}
+	
+	.col {
+		float: left;
+		padding: 0px 7px 14px;
+	}
+}
+
+/*Desktop View*/
+
+@media (min-width: 1024px){
+	
+	body {
+		max-width: 1200px;
+	}
+	
+	.crealaine-logo {
+		float: left;
+	}
+	
+	.style-nav {
+		float: right;
+	}
+	
+	.col-lg-one-fourth {
+		width: 25%;
+	}
 }
