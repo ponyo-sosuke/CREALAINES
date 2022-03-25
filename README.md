@@ -138,3 +138,7 @@ Raphael detiendra le dossier leader car il fera l'assemblage des pages.<br><br>
 
 https://trello.com/b/hzyfLGv3/kanban-crea-laines
    
+
+
+PROJET GERE SOLO AU FINAL
+
